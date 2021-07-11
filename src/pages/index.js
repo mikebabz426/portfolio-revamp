@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "gatsby";
 import {
   Container,
   IconButton,
@@ -26,7 +27,118 @@ const IndexPage = () => {
   return (
     <Layout headerInfo>
       <SEO title="Home" />
-      <h1>Welcome to my site</h1>
+      <Container className={classes.hero} id="hero">
+        <Collapse
+          in={animation}
+          timeout={1200}
+          style={{ margin: "0 auto", width: "100%" }}
+        >
+          <Box className={classes.container}>
+            <Typography
+              variant="h1"
+              className={classes.showcaseOne}
+              style={theme ? { color: "#f2f2f2" } : { color: "#2e2e2e" }}
+            >
+              JS
+            </Typography>
+            <Typography
+              variant="h1"
+              className={classes.showcaseTwo}
+              style={theme ? { color: "#f2f2f2" } : { color: "#2e2e2e" }}
+            >
+              React
+            </Typography>
+            <Typography
+              variant="h1"
+              className={classes.showcaseThree}
+              style={theme ? { color: "#f2f2f2" } : { color: "#2e2e2e" }}
+            >
+              GraphQL
+            </Typography>
+            <Typography
+              variant="h1"
+              className={classes.showcaseFour}
+              style={theme ? { color: "#f2f2f2" } : { color: "#2e2e2e" }}
+            >
+              CSS3
+            </Typography>
+            <Typography
+              variant="h5"
+              align="center"
+              className={classes.type}
+              style={{ marginBottom: "1rem" }}
+            >
+              Hello
+            </Typography>
+            <Typography
+              variant="h2"
+              align="center"
+              className={classes.type}
+              style={{ marginBottom: "1rem" }}
+            >
+              My name is Mike,
+            </Typography>
+            <Typography
+              variant="h5"
+              align="center"
+              className={classes.type}
+              style={{ marginBottom: "1rem" }}
+            >
+              and I turn your ideas into clean and user-friendly web solutions
+            </Typography>
+            <Box className={classes.buttonBox}>
+              <Link to="#about" className={classes.link}>
+                <Button variant="outlined" className={classes.btn}>
+                  About Me
+                </Button>
+              </Link>
+              <Link to="#projects" className={classes.link}>
+                <Button
+                  size="large"
+                  variant="contained"
+                  color="secondary"
+                  className={classes.btn}
+                >
+                  My Work
+                </Button>
+              </Link>
+            </Box>
+            <Box className={classes.social}>
+              <MuiLink
+                style={{
+                  textDecoration: "none",
+                }}
+                target="_blank"
+                href="https://www.linkedin.com/in/mike-babetchki-34a150102/"
+              >
+                <LinkedInIcon
+                  color="secondary"
+                  fontSize="large"
+                  className={classes.socialLink}
+                />
+              </MuiLink>
+              <MuiLink
+                style={{
+                  textDecoration: "none",
+                }}
+                target="_blank"
+                href="https://github.com/mikebabz426"
+              >
+                <GitHubIcon
+                  color="secondary"
+                  fontSize="large"
+                  className={classes.socialLink}
+                />
+              </MuiLink>
+            </Box>
+            <IconButton color="secondary" className={classes.scroll}>
+              <MuiLink href="#skills" className={classes.skills}>
+                <ArrowDDIcon fontSize="large" />
+              </MuiLink>
+            </IconButton>
+          </Box>
+        </Collapse>
+      </Container>
     </Layout>
   );
 };
