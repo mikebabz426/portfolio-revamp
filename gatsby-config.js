@@ -6,6 +6,7 @@ module.exports = {
     description: "A portfolio website showcasing my recent work.",
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
