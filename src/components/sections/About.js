@@ -1,16 +1,15 @@
-import React from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
-import BackgroundImage from "gatsby-background-image"
-import { Container, Typography, Grid, Button } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core/styles"
-import { useInView } from "react-intersection-observer"
-import Grow from "@material-ui/core/Grow"
+import React from "react";
+import { Link } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
+import { Container, Typography, Grid, Button, Box } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Grow from "@material-ui/core/Grow";
+import { useInView } from "react-intersection-observer";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     margin: "auto",
     minHeight: "100vh",
-    width: "100vw",
   },
   grid: {
     padding: "3rem",
@@ -23,38 +22,23 @@ const useStyles = makeStyles(theme => ({
   link: {
     textDecoration: "none",
   },
-}))
+  imgWrap: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+}));
 
 const AboutSection = () => {
-  const data = useStaticQuery(graphql`
-    {
-      about: file(relativePath: { eq: "about.png" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-  const classes = useStyles()
-  const source = data.about.childImageSharp.fluid
-  const { ref, inView } = useInView()
+  const classes = useStyles();
+  const { ref, inView } = useInView();
 
-  const style = {
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    width: "361.25px",
-    height: "385px",
-    margin: "auto",
-  }
   return (
     <Container maxWidth="lg" className={classes.root} id="about">
       <Grid
         className={classes.grid}
         container
-        justify="center"
+        justifyContent="space-around"
         alignItems="center"
       >
         <Grow
@@ -100,13 +84,23 @@ const AboutSection = () => {
           style={{ transformOrigin: "0 0 0" }}
           {...(inView ? { timeout: 1500 } : {})}
         >
-          <Grid item md={6} style={{ marginTop: "2rem" }}>
-            <BackgroundImage style={style} fluid={source}></BackgroundImage>
+          <Grid item md={6}>
+            <Box className={classes.imgWrap}>
+              <StaticImage
+                src="../../images/about.png"
+                alt="abstract image of programer"
+                loading="eager"
+                placeholder="blurred"
+                width={361.25}
+                height={385}
+                style={{ margin: "auto" }}
+              />
+            </Box>
           </Grid>
         </Grow>
       </Grid>
     </Container>
-  )
-}
+  );
+};
 
-export default AboutSection
+export default AboutSection;
