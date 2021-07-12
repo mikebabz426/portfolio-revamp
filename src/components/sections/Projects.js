@@ -1,13 +1,11 @@
-import React from "react"
-// import { graphql, useStaticQuery } from "gatsby"
-import { Container, Typography, Fade, Box } from "@material-ui/core"
-import { makeStyles } from "@material-ui/core/styles"
-// import Project from "../../components/project"
-import projectsArr from "../../services/services.js"
-import { useInView } from "react-intersection-observer"
-import Card from "../../components/card"
+import React from "react";
+import { Container, Typography, Fade, Box } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import projectsArr from "../../services/services.js";
+import { useInView } from "react-intersection-observer";
+import Card from "../../components/Card";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     padding: "6rem 2rem",
     backgroundColor: theme.palette.type === "light" ? "#f2f2f2" : "#222",
@@ -34,11 +32,11 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "column",
     },
   },
-}))
+}));
 
 const ProjectsSection = () => {
-  const classes = useStyles()
-  const { ref, inView } = useInView()
+  const classes = useStyles();
+  const { ref, inView } = useInView();
 
   return (
     <Fade in={inView} timeout={1000}>
@@ -56,7 +54,7 @@ const ProjectsSection = () => {
         </Box>
       </Container>
     </Fade>
-  )
-}
+  );
+};
 
-export default ProjectsSection
+export default ProjectsSection;
