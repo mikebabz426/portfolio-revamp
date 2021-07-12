@@ -44,8 +44,8 @@ const TechStack = ({ project }) => {
           >
             Front-end:
           </Typography>
-          {front.map((tech) => (
-            <Tech name={tech} key={tech} />
+          {front.map((tech, i) => (
+            <Tech name={tech} key={i} />
           ))}
         </Box>
         {back.length !== 0 ? (
@@ -57,8 +57,8 @@ const TechStack = ({ project }) => {
             >
               Back-end:
             </Typography>
-            {back.map((tech) => (
-              <Tech name={tech} key={tech} />
+            {back.map((tech, i) => (
+              <Tech name={tech} key={i} />
             ))}
           </Box>
         ) : null}

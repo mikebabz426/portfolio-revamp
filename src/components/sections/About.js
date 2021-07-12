@@ -8,12 +8,14 @@ import { useInView } from "react-intersection-observer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: "auto",
-    minHeight: "100vh",
+    minHeight: "60vh",
+    padding: "6rem 0",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   grid: {
-    padding: "3rem",
-    minHeight: "100vh",
+    minHeight: "60vh",
     width: "100%",
   },
   span: {
@@ -34,12 +36,13 @@ const AboutSection = () => {
   const { ref, inView } = useInView();
 
   return (
-    <Container maxWidth="lg" className={classes.root} id="about">
+    <Container maxWidth="md" className={classes.root} id="about">
       <Grid
         className={classes.grid}
         container
         justifyContent="space-around"
         alignItems="center"
+        spacing={3}
       >
         <Grow
           in={inView}

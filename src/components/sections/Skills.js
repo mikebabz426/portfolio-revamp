@@ -37,104 +37,106 @@ const SkillsSection = () => {
 
   return (
     <Container maxWidth="lg" className={classes.section} id="skills">
-      <Typography variant="h2" align="center">
-        Here's an overview of some of my skills
-      </Typography>
-
-      <Grid
-        className={classes.grid}
-        container
-        spacing={4}
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Grid item>
-          <Fade in={inView} timeout={1000}>
-            <Card raised className={classes.card}>
-              <CardHeader
-                className={classes.headers}
-                title="Front-End Technologies"
-                avatar={
-                  <Avatar aria-label="web">
-                    <WebIcon color="primary" />
-                  </Avatar>
-                }
-              />
-              <CardContent>
-                {frontEnd.map((tech) => (
-                  <Chip
-                    color="primary"
-                    className={classes.chip}
-                    label={tech}
-                    key={tech}
-                  />
-                ))}
-              </CardContent>
-            </Card>
-          </Fade>
-        </Grid>
-        <Grid item>
-          <Fade in={inView} timeout={1250}>
-            <Card raised className={classes.card} ref={ref}>
-              <CardHeader
-                title="Design Tools"
-                className={classes.headers}
-                avatar={
-                  <Avatar aria-label="web">
-                    <BrushIcon color="primary" />
-                  </Avatar>
-                }
-              />
-              <CardContent>
-                {design.map((tech) => (
-                  <Chip
-                    color="primary"
-                    className={classes.chip}
-                    label={tech}
-                    key={tech}
-                  />
-                ))}
-              </CardContent>
-            </Card>
-          </Fade>
-        </Grid>
-        <Grid item>
-          <Fade in={inView} timeout={1500}>
-            <Card raised className={classes.card}>
-              <CardHeader
-                title="CSS Frameworks & Tools"
-                className={classes.headers}
-                avatar={
-                  <Avatar aria-label="web">
-                    <LayersIcon color="primary" />
-                  </Avatar>
-                }
-              />
-              <CardContent>
-                {cssTools.map((tech) => (
-                  <Chip
-                    color="primary"
-                    className={classes.chip}
-                    label={tech}
-                    key={tech}
-                  />
-                ))}
-              </CardContent>
-            </Card>
-          </Fade>
-        </Grid>
-      </Grid>
-      <Container maxWidth="md" className={classes.closing}>
-        <Typography variant="body1">
-          I am constantly looking for the latest and greatest in tech. Here are
-          some of the technologies I am currently working with and planning on
-          incorporating into my workflow very soon.
+      <Box>
+        <Typography variant="h2" align="center">
+          Here's an overview of some of my skills
         </Typography>
-        <Box style={{ display: "flex", margin: "2rem" }}>
-          <Chip color="primary" label="Docker" className={classes.chip} />
-          <Chip color="primary" label="Kubernetes" className={classes.chip} />
-        </Box>
-      </Container>
+
+        <Grid
+          className={classes.grid}
+          container
+          spacing={4}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item>
+            <Fade in={inView} timeout={1000}>
+              <Card raised className={classes.card}>
+                <CardHeader
+                  className={classes.headers}
+                  title="Front-End Technologies"
+                  avatar={
+                    <Avatar aria-label="web">
+                      <WebIcon color="primary" />
+                    </Avatar>
+                  }
+                />
+                <CardContent>
+                  {frontEnd.map((tech) => (
+                    <Chip
+                      color="primary"
+                      className={classes.chip}
+                      label={tech}
+                      key={tech}
+                    />
+                  ))}
+                </CardContent>
+              </Card>
+            </Fade>
+          </Grid>
+          <Grid item>
+            <Fade in={inView} timeout={1250}>
+              <Card raised className={classes.card} ref={ref}>
+                <CardHeader
+                  title="Design Tools"
+                  className={classes.headers}
+                  avatar={
+                    <Avatar aria-label="web">
+                      <BrushIcon color="primary" />
+                    </Avatar>
+                  }
+                />
+                <CardContent>
+                  {design.map((tech) => (
+                    <Chip
+                      color="primary"
+                      className={classes.chip}
+                      label={tech}
+                      key={tech}
+                    />
+                  ))}
+                </CardContent>
+              </Card>
+            </Fade>
+          </Grid>
+          <Grid item>
+            <Fade in={inView} timeout={1500}>
+              <Card raised className={classes.card}>
+                <CardHeader
+                  title="CSS Frameworks & Tools"
+                  className={classes.headers}
+                  avatar={
+                    <Avatar aria-label="web">
+                      <LayersIcon color="primary" />
+                    </Avatar>
+                  }
+                />
+                <CardContent>
+                  {cssTools.map((tech) => (
+                    <Chip
+                      color="primary"
+                      className={classes.chip}
+                      label={tech}
+                      key={tech}
+                    />
+                  ))}
+                </CardContent>
+              </Card>
+            </Fade>
+          </Grid>
+        </Grid>
+        <Container maxWidth="md" className={classes.closing}>
+          <Typography variant="body1">
+            I am constantly looking for the latest and greatest in tech. Here
+            are some of the technologies I am currently working with and
+            planning on incorporating into my workflow very soon.
+          </Typography>
+          <Box style={{ display: "flex", margin: "2rem" }}>
+            <Chip color="primary" label="Docker" className={classes.chip} />
+            <Chip color="primary" label="Kubernetes" className={classes.chip} />
+          </Box>
+        </Container>
+      </Box>
     </Container>
   );
 };
@@ -143,10 +145,14 @@ const SkillsSection = () => {
 
 const useStyles = makeStyles((theme) => ({
   section: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: theme.palette.type === "light" ? "#f2f2f2" : "#222",
     clipPath: "polygon(0 0, 100% 5%, 100% 100%, 0 95%)",
-    minHeight: "100vh",
-    paddingTop: "10rem",
+    minHeight: "90vh",
+    paddingTop: "3rem",
+    paddingBottom: "3rem",
     [theme.breakpoints.down("sm")]: {
       clipPath: "polygon(0 0, 100% 1%, 100% 100%, 0 99%)",
     },

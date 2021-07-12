@@ -1,27 +1,23 @@
-import React, { useState } from "react"
-import * as cardStyles from "./card.module.css"
-import { Button, Link as MuiLink, Card as CardCover } from "@material-ui/core"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React, { useState } from "react";
+import * as cardStyles from "./card.module.css";
+import { Button, Link as MuiLink, Card as CardCover } from "@material-ui/core";
+import { Link } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Card = ({ project }) => {
-  const [hoverClass, setHoverClass] = useState(false)
+  const [hoverClass, setHoverClass] = useState(false);
 
   const cardHoverStyle = {
     top: "200px",
-  }
+  };
 
   return (
     <CardCover
       raised
-      // role="region"
       className={cardStyles.card}
       onClick={() =>
-        setHoverClass(hoverClass => (hoverClass === false ? true : false))
+        setHoverClass((hoverClass) => (hoverClass === false ? true : false))
       }
-      // onKeyDown={() =>
-      //   setHoverClass(hoverClass => (hoverClass === false ? true : false))
-      // }
     >
       {project.name === "Sunset Canines" ? (
         <StaticImage
@@ -58,30 +54,31 @@ const Card = ({ project }) => {
       >
         <h3 className={cardStyles.heading}>{project.name}</h3>
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <MuiLink
-            to={project.git}
+          <a
+            href={project.git}
             target="_blank"
-            component={Link}
-            style={{ margin: "0 3px" }}
+            rel="noreferrer"
+            style={{ margin: "0 3px", textDecoration: "none", color: "#fff" }}
           >
             <Button size="small" color="secondary" variant="contained">
               Code
             </Button>
-          </MuiLink>
-          <MuiLink
-            to={project.url}
+          </a>
+
+          <a
+            href={project.url}
             target="_blank"
-            component={Link}
-            style={{ margin: "0 3px" }}
+            rel="noreferrer"
+            style={{ margin: "0 3px", textDecoration: "none", color: "#fff" }}
           >
             <Button size="small" color="secondary" variant="contained">
               Site
             </Button>
-          </MuiLink>
+          </a>
           <MuiLink
             to="/projects"
             component={Link}
-            style={{ margin: "0 3px" }}
+            style={{ margin: "0 3px", textDecoration: "none", color: "#fff" }}
             state={project}
           >
             <Button size="small" color="secondary" variant="contained">
@@ -91,7 +88,7 @@ const Card = ({ project }) => {
         </div>
       </div>
     </CardCover>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

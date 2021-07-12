@@ -1,5 +1,5 @@
-import React from "react"
-import ContactMeSvg from "../../assets/contact.svg"
+import React from "react";
+import ContactMeSvg from "../../assets/contact.svg";
 import {
   Container,
   Typography,
@@ -7,11 +7,11 @@ import {
   TextField,
   Button,
   Slide,
-} from "@material-ui/core"
-import { makeStyles } from "@material-ui/core/styles"
-import * as Yup from "yup"
-import { Formik, Form, Field } from "formik"
-import { useInView } from "react-intersection-observer"
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import * as Yup from "yup";
+import { Formik, Form, Field } from "formik";
+import { useInView } from "react-intersection-observer";
 
 //Form Validation:
 
@@ -19,11 +19,11 @@ let contactSchema = Yup.object().shape({
   name: Yup.string().required().min(3),
   email: Yup.string().email().required(),
   message: Yup.string().required(),
-})
+});
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    // padding: "4rem 3rem 3rem 3rem",
+    paddingTop: "5rem",
     margin: "auto",
     minHeight: "100vh",
     display: "flex",
@@ -45,17 +45,19 @@ const useStyles = makeStyles(theme => ({
   span: {
     color: "#3f51b5",
   },
-}))
+}));
 
 const ContactSection = () => {
-  const classes = useStyles()
-  const { ref, inView } = useInView()
+  const classes = useStyles();
+  const { ref, inView } = useInView();
 
-  const encode = data => {
+  const encode = (data) => {
     return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&")
-  }
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
 
   return (
     <Container maxWidth="lg" className={classes.root} id="contact">
@@ -63,7 +65,12 @@ const ContactSection = () => {
         Contact
         <span className={classes.span}> Me</span>
       </Typography>
-      <Grid className={classes.grid} container justify="center" align="center">
+      <Grid
+        className={classes.grid}
+        container
+        justifyContent="center"
+        align="center"
+      >
         <Grid item md={6}>
           <Typography variant="h5" style={{ marginBottom: "1rem" }}>
             Need help with your next project?
@@ -89,13 +96,13 @@ const ContactSection = () => {
                   body: encode({ "form-name": "contact", ...values }),
                 })
                   .then(() => {
-                    alert("Success")
-                    actions.resetForm()
+                    alert("Success");
+                    actions.resetForm();
                   })
                   .catch(() => {
-                    alert("Error")
+                    alert("Error");
                   })
-                  .finally(() => actions.setSubmitting(false))
+                  .finally(() => actions.setSubmitting(false));
               }}
             >
               {({ errors, touched }) => {
@@ -149,7 +156,7 @@ const ContactSection = () => {
                       required
                       fullWidth
                       multiline
-                      rowsMax={5}
+                      maxRows={5}
                       as={TextField}
                     />
                     {errors.message && touched.message ? (
@@ -169,14 +176,14 @@ const ContactSection = () => {
                       Send
                     </Button>
                   </Form>
-                )
+                );
               }}
             </Formik>
           </Grid>
         </Slide>
       </Grid>
     </Container>
-  )
-}
+  );
+};
 
-export default ContactSection
+export default ContactSection;
